@@ -26,9 +26,7 @@ use OCP\AppFramework\Db\Entity;
 /**
  * @method void setId(int $id)
  * @method void setUid(string $uid);
- * @method void setLoginName(string $loginName)
  * @method void setPassword(string $password)
- * @method void setName(string $name)
  * @method string getName()
  * @method void setToken(string $token)
  * @method string getToken()
@@ -131,6 +129,26 @@ class DefaultToken extends Entity implements IToken {
 	 */
 	public function setLastCheck($time) {
 		return parent::setLastCheck($time);
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function setName($name) {
+		if (strlen($name) < 1) {
+			throw new \InvalidArgumentException();
+		}
+		return parent::setName($name);
+	}
+
+	/**
+	 * @param string $loginName
+	 */
+	public function  setLoginName($loginName) {
+		if (strlen($loginName) < 1) {
+			throw new \InvalidArgumentException();
+		}
+		return parent::setLoginName($loginName);
 	}
 
 }
