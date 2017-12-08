@@ -89,7 +89,7 @@ class PreviewPlugin extends ServerPlugin {
 
 		if ($image = $fileNode->getThumbnail($queryParams)) {
 			if ($image === null || !$image->valid()) {
-				return false;
+				throw new NotFound();
 			}
 			$type = $image->mimeType();
 			if (!in_array($type, ['image/png', 'image/jpeg', 'image/gif'])) {
